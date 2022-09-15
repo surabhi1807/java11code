@@ -1,6 +1,9 @@
 package inheritance;
 
 public class Child2 extends Parent {
+	public Child2() {
+		super();
+	}
 	private String name;
 	private String email;
 	private String bike;

@@ -39,7 +39,6 @@ public class MyClassA implements MyInterfaceX,MyInterfaceY {
 	@Override
 	public void m5() {
 		// TODO Auto-generated method stub
-		MyInterfaceX.super.m5();
 	}
 	public static void main(String[] args) {
 	//	System.out.println(a);

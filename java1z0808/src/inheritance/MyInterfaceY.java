@@ -9,4 +9,20 @@ public interface MyInterfaceY {
   default void m5() {
 	  System.out.println("MyInterfaceY default method m5");
   }
+  default int m7() {
+	  System.out.println("MyInterfaceY default method m7");
+	  return 0;
+  }
+  default void m8(int a) {
+	  System.out.println("MyInterfaceY default method m8");
+  }
+  static void m6() {
+	  System.out.println("MyInterfaceY static method m6");
+  }
+  static void m9() {
+	  System.out.println("MyInterfaceY static method m9");
+  }
+  static void p2() {
+	  System.out.println("MyInterfaceY static method p2");
+  }
 }
