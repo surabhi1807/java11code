@@ -27,3 +27,10 @@ public class ExeuctionOrder {
      
 
 }
+	private static int m2() {
+		return 0;
+	}
+	private int m1() {
+		return 0;
+	}
+}

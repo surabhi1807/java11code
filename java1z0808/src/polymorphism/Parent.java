@@ -4,6 +4,9 @@ public class Parent {
 	private String name;
 	private String surname;
 	private int salary;
+	private String car;
+	private static  int pocketMoney;
+	private String bike;
 	public String getName() {
 		return name;
 	}
@@ -22,6 +25,25 @@ public class Parent {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
+	public final String getCar() {
+		return car;
+	}
+	public void setCar(String car) {
+		this.car = car;
+	}
+	public static int getPocketMoney() {
+		return pocketMoney;
+	}
+	public  void setPocketMoney(int pocketMoney) {
+		this.pocketMoney = pocketMoney;
+	}
+	public String getBike() {
+		return bike;
+	}
+	public void setBike(String bike) {
+		this.bike = bike;
+	}
+	
 	
 
 }

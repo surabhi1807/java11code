@@ -19,6 +19,23 @@ public class Child extends Parent {
 	public int getSalary() {
 		return 0;
 	}
+//	@Override
+//	public  String getCar() {
+//		return "Honda";
+//	}
+// @Override
+// public  int getPocketMoney() {
+//	 return 500;
+// }
+	@Override
+	public final String getBike() {
+		return "Activa";
+	}
 	
-
+//	public static String getSurname() {
+//		return "Singh";
+//	}
+	public static void m1() {
+		
+	}
 }
