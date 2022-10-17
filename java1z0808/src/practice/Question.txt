@@ -93,12 +93,43 @@ I/P:-10
     variable 3 is student email id and it is a non- static variable .This class also contains 1 static and 1 non static block . Also , generate Getter and setter method for the given variables.
     create  a parameterized (argumented) constructor for the above class. 
     
+ 9.*** what is the similarities and differences between method overloading and method overriding ? Give real life example.
+ 
+ 10. find the value of c.
+    int a=10;
+    int b=9;
+    int c=++a+b++-b---a+b++;
+ 
+ 11. predict the  output of the given pseudo code.
+ 
+      for(int i=0,j=5;i<j;i++)
+      System.out.print(i+" ");  
+      System.out.println(j);
+    
+    output:- 
+             a) 01234
+                5
+             b) 1234
+                5
+             c) 01234
+                012345
+             d) compile time error       
+    
+ 12. predict the output of the given pseudo code.
+ 
+     int i=1;
+     while(i>0)
+     Syso(i++)
+     syso("Hello world")
+     
    
-    
-    
-    
-    
-    
+   
+  Output:- a) 1   
+              Hello world
+           b) 2   
+              Hello world
+           c) run time error
+           d) compilation error-unreachable code.
     
     
     

@@ -2,11 +2,14 @@ package polymorphism;
 
 public class Parent {
 	private String name;
-	private String surname;
+	public String surname;
 	private int salary;
 	private String car;
 	private static  int pocketMoney;
 	private String bike;
+	public Parent() {
+		System.out.println("This is Parent class");
+	}
 	public String getName() {
 		return name;
 	}
