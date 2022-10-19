@@ -1,6 +1,8 @@
 package exception_handling;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class CombinationOfTryCatchFinally {
 
@@ -96,6 +98,29 @@ try {
 //}finally {
 //	
 //}
-	
+	try {
+		System.out.println( 10/0);
+		File file=new File("C:\\Users\\ADMIN\\OneDrive\\Documents\\New folder\\Hello.txt");
+		file.createNewFile();
+		throw new FileNotFoundException();
+	} catch(ArithmeticException d){
+		
+	}
+	catch(FileNotFoundException e) {
+		
+	}catch(IOException f) {
+		
+	}
+	try {
+		System.out.println( 10/0);
+		File file=new File("C:\\Users\\ADMIN\\OneDrive\\Documents\\New folder\\Hello.txt");
+		file.createNewFile();
+		throw new FileNotFoundException();
+	} catch(ArithmeticException |FileNotFoundException d){
+		
+	}
+	catch(IOException f) {
+		
+	}
 	}
 	}
