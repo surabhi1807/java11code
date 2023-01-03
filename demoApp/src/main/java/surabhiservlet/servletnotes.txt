@@ -1,0 +1,232 @@
+Servlet - it is a server side technology which is used to create a dynamic web application . 
+
+servlet execution basically consists of six basic step 
+step 1- user  send the request to the server
+step 2 - server receive the request 
+step 3- server pass the request to the respective servlet
+step 4- servlet process the request and generates the response
+step 5- servlet send the response back to the server
+step 6- server send the response back to the user and the user's  browser display it on the screen 
+ 
+ In servlets there are 2 impotent packages:
+ 1 - javax.servlet
+ 2 - javax.servlet.http
+ 
+ HttpServletRequest:- 
+ when you send the request using Http protocol that request is called Http request.
+ Http request contains 2 parts-
+ 1. Headers
+ 2. Body
+ when you send the request with http method GET then parameter data will be converted to 
+ query string and that query string will be attach to the URL (Unique Resource Location)
+ as below- 
+ 
+ http://localhost:8080/http://localhost:8080/demoApp/login.do?Email=surabhikumari1807%40gmail.com&pwd=Pragati%40123
+ 
+ URL :- http://localhost:8080/demoApp/login.do
+ contextpath :- /demoApp
+ protocol:- http
+ port:- 8080 
+ URI(Uniform Resource Identifier):-  /demoApp/login.do
+ Query String:- Email=surabhikumari1807%40gmail.com&pwd=Pragati%40123
+ 
+ In the case of Http method GET , data will be placed in http request Headers and http request 
+ Body will be empty.
+ 
+ when you send the request with http method POST then parameter data will be converted to 
+ query string and that query string will be placed in http request Body then URL looks like -
+ 
+ http://localhost:8080/demoApp/login.do
+ 
+ Q1:- Difference between http method GET and POST
+ 1:-(Definition)
+ 2:- using GET you can send only limited amount of data where as using POST you can 
+ send unlimited amount of data 
+ 3:- GET is not secure because data will be visible  in the URL but POST is more secure .
+ 
+ Q. who is responsible for creating HttpServletRequest and  HttpServletResponse  object ?
+ ans:- The servlet container 
+ Q. what dose HttpServeletRequest contain ?
+ ans:- Request parameters , request headers, request cookies and other information 
+ 
+ Q. what dose HttpServeletResponse contain ?
+ ans:- Response headers, response Stream(In terms of bits and character).
+ 
+ RequestDispatcher:- 
+ It is an interface available in javax.Servlet package
+ The sub class is implemented by container vendor(java -XshowSettings:properties -version).
+ It has two methods :-
+     1. public void forward(request, response);
+     2. public void include (request, response);
+    
+ Forward():-
+ It is used to forward the request from 
+  1. Servlet to html
+  2. Servlet to jsp
+  3. Servlet to servlet
+  4. Jsp to jsp
+  5. Jsp to html
+  6. Jsp to servlet
+   
+ you can place many forward() method in one Servlet conditionally to forward  the control to 
+ other resource but only one forward method will be executed .
+ 
+ When you try to invoke two forward() method then you will get -
+ java.lang.IllegalStateException: Cannot forward after response has been committed.
+ 
+ When you have other statement after forward() method then those statement will be executed
+  but we will not be able to write any content in the response Stream .
+ 
+ Q. How can we restrict the user from accessing the page directly ?
+ ans. put the page(html,jsp) under WEB-INF directory . 
+ 
+ include():-    
+ . it is use to include the response servlet or jsp in another servlet or jsp.
+ . you can place any include() methods in one servlet to include many resources and 
+  all include() methods will be executed .
+  
+ Q. Difference between forward() and include() method ?
+ 
+ Q.How you can write content to the browser ?
+ ans.  PrintWriter write = response.getWriter();
+        write.print(email + " your registration is successfull.Please login!!");
+        
+ sendRedirect() :- 
+     .  The sendRedirect() method of HttpServletResponse interface is used to redirect 
+        response to another servlet resources like servlet, Jsp, Html file.
+      . It accept relative value as well as absolute URL .
+      . This method works at client site so it can work inside and outside the server.
+  
+ Q. Difference between forward() method of RequestDispatcher and sendRedirect() method of HttpServeletResponse?
+ ans. 1. using forward() method  you can send the control from one web component(JSP, Servlet) to another web
+        component which are in same application  where as using sendRedirect() method you can send the control from 
+         one web component (JSP, Servlet) to another web component of same or another web application .
+         
+       2. while you are forwarding control using forward() method, you can send data as an request attribute .
+          ex:- request.setAttribute("NAME","Surabhi");
+               request.forward(request,response); 
+               ${requestScop.NAME}
+               
+         where as why you are forwarding control using sendRedirect() method you can send the data query String.
+              ex:-  String url =   "https://www.google.co.in/?q= "+ sr ;       
+              response.sendRedirect(url);
+           
+       3.  forwarding is happening completely at server side and client cannot  observe it where as Redirection 
+           is happening at server side and client can observe the change in the url.     
+	
+  
+JSP:- 
+     1. It stands for Java Server Page. 
+     2. Its a server side technology.
+     3. It is used for creating dynamic web application.
+     4. Using jsp tags we insert java code into html pages.
+     5. JSP is a extended version of servlet.
+     6. JSP pages are easy to maintain .
+     7. We can create interactive web site in real time environment. 
+  
+ JSP Scopes:-  
+           There are four JSP Scopes 
+           1. Page Scope(pageScope)
+           2. Request Scope(requestScope)
+           3. Session Scope(sessionScope)
+           4. Application Scope(applicationScope)
+ We can store the following types of data as attributes in the above scopes :- 
+      1. String, Wrapper classes , Date
+         ex:- 
+         
+             In servlet(set the data)-
+             
+              	request.setAttribute("uname",email);
+			    LocalDate date = LocalDate.now();
+			    String currentDate = date.toString();
+			    request.setAttribute("date", currentDate);
+			    request.setAttribute("id", 180711);
+            
+           In JSP(fetch the data)-
+           
+                 <p>welcome ${requestScope.uname} you can see your data now</p>
+                 <p>today is ${requestScope.date}</p>
+                 <p>your enrollment number is ${requestScope.id}</p>
+                     
+      2. Collection of String , Wrapper , Date
+    	ex:-
+    	     
+    	     In servlet(set the data)-
+    	     
+    	      List<String> myCourse = new ArrayList<>();
+			  myCourse.add("dbms");
+			  myCourse.add("data science");
+			  myCourse.add("big data");
+			  myCourse.add("java");
+			  request.setAttribute("listOfCourse",myCourse);
+			  
+		   In JSP(fetch the data)-
+		   
+		   ${requestScope.listOfCourse[0]}
+		   ${requestScope.listOfCourse[1]}
+		   ${requestScope.listOfCourse[2]}
+		   ${requestScope.listOfCourse[3]}
+	
+	Note:-  There is a problem with above expression because of using the index directly  
+	
+Q. How can you solve the above problem ?
+ans. With the help of JSTL(JSP Standard Tag Library).
+	ex:- 	using JSTL tags in jsp
+	
+	        <c:forEach var="li" items="${requestScope.listOfCourse}">
+            	<p>${li}</p>
+            </c:forEach>   
+    	      
+      3. Collection of collections 
+      ex:-
+          
+          In servlet (set the data)-
+               
+             List<List<String>>myFavList=new ArrayList<>();
+		
+		    List<String> sweets = new ArrayList<>();
+		    sweets.add("gulabjamun");
+		    sweets.add("barfi");
+		    sweets.add("laddu");
+		    sweets.add("rasgula");
+		    myFavList.add(sweets);
+		    
+		    List<String>flowers = new ArrayList<>();
+		    flowers.add("Rose");
+		    flowers.add("lotus");
+		    flowers.add("sunflower");
+		    myFavList.add(flowers);
+		    
+		    List<String>makeup = new ArrayList<>();
+		    makeup.add("lipstick");
+		    makeup.add("eyeliner");
+		    makeup.add("kajal");
+		    myFavList.add(makeup);
+		    request.setAttribute("listOfList",myFavList);
+		    
+		    In JSP(fetch the data)-
+		    
+		     <c:forEach var="li1" items="${requestScope.listOfList}">
+             	<c:forEach var="fav" items="${li1}">
+			 		<p>${fav}</p>
+			 	</c:forEach>
+	     	 </c:forEach>
+		     
+      
+      4. Custom or user define class object(Book,Student)
+      5. Map object 
+      6. Collection of map object  
+      
+  JSTL(JSP Standard Tag Library):-
+             JSTL is collection of utility tag implemented by java people which can be used
+              by developer in JSP .JSTL tags are divided into following types--->
+	               1.- Code tags 
+				   2.- Formatting tags
+				   3.- SQL tags
+				   4.- XML tags
+           (NOTE-to use JSTL tags you have to put JSTL and Standard jars in your web project
+            WEB-INF/lib folder and following taglib directive in JSP-
+                   1.  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+				   2.  <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>    
+      
+               
